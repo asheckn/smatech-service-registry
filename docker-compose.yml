@@ -1,0 +1,18 @@
+version: '3.8'
+
+networks:
+  smatech:
+    driver: bridge
+
+services:
+  eureka-server:
+    image: smatech-eureka:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: eureka-server
+    networks:
+      - smatech
+    ports:
+      - "8761:8761"
+    restart: always
